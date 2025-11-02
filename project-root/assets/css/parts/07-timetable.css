@@ -1,0 +1,11 @@
+/* ===== Timetable (calendar-like) ===== */
+.tt-wrap{display:grid;grid-template-columns:64px 1fr;gap:8px}
+.tt-hours{display:grid;gap:8px}
+.tt-hours .h{height:60px;display:grid;place-items:center;color:var(--muted);border:1px dashed var(--line);border-radius:10px;background:var(--chip)}
+.tt-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:8px}
+.tt-cell{position:relative;min-height:60px;background:var(--chip);border:1px solid var(--line);border-radius:12px;overflow:hidden}
+.tt-card{position:absolute;inset:4px;border-radius:10px;border:0;color:#fff;display:flex;align-items:flex-end;padding:8px;font-weight:800;box-shadow:0 10px 20px #0003;animation:pop .15s ease}
+.tt-card small{display:block;font-weight:600;opacity:.9}
+.legend{display:flex;flex-wrap:wrap;gap:6px;margin:8px 0}
+.legend .chip{border-left:6px solid var(--pri)}
+

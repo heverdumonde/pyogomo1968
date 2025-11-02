@@ -1,0 +1,14 @@
+/* ==== 새로운 '오늘의 할 일' 트렌디 카드 ==== */
+.todo-card{border:1px solid var(--line);background:var(--card);border-radius:16px;padding:12px;box-shadow:var(--shadow)}
+.todo-summary{display:flex;gap:8px;align-items:center}
+.todo-input-row{display:flex;gap:8px;margin-top:8px}
+.todo-input-row input{flex:1;background:var(--chip);border:1px solid var(--line);border-radius:12px;padding:10px}
+.todo-list{display:grid;gap:8px;margin-top:10px}
+.todo-item{display:flex;align-items:center;gap:10px;padding:10px;border:1px solid var(--line);border-radius:12px;background:var(--chip);animation:fadeIn .15s ease both}
+.todo-item .t-text{flex:1}
+.todo-item.done{opacity:.65}
+.todo-item .drag{cursor:grab}
+.todo-item .del{border:1px solid var(--line);background:transparent;border-radius:10px;padding:6px 8px}
+.check-anim{inline-size:20px;block-size:20px;border-radius:6px;border:1.5px solid var(--line);display:grid;place-items:center;transition:all .12s ease;background:var(--card)}
+.check-anim.checked{background:var(--ok);border-color:var(--ok);color:#fff}
+

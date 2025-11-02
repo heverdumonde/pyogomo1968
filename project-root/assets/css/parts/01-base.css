@@ -1,0 +1,37 @@
+
+:root{
+--bg:#f6f7f9; --card:#ffffff; --ink:#0f1720; --muted:#5b6774; --pri:#4f8cff; --pri-ink:#0b1222;
+--accent:#00b9a0; --danger:#ef4444; --ok:#25c280; --line:#e6e8ee; --chip:#f3f5f8; --yellow:#f5c542;
+--shadow:0 8px 24px rgba(15,23,32,.06);
+}
+.theme-dark{
+--bg:#0b0b0d; --card:#141417; --ink:#f3f4f6; --muted:#a3a3a3; --pri:#4f8cff; --pri-ink:#0b1222;
+--accent:#00d4b3; --danger:#ff5d5d; --ok:#25c280; --line:#24242a; --chip:#1b1b21; --yellow:#ffd45d;
+--shadow:0 10px 30px rgba(0,0,0,.25);
+}
+
+*{box-sizing:border-box}
+html,body{margin:0;padding:0;background:var(--bg);color:var(--ink);
+font-family:ui-sans-serif,system-ui,Segoe UI,Pretendard,Apple SD Gothic Neo,Arial}
+a{color:inherit;text-decoration:none}
+button{cursor:pointer}
+img{max-width:100%;display:block}
+.wrap{max-width:1024px;margin:0 auto;padding-bottom:84px}
+
+@keyframes fadeUp{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+@keyframes pop{0%{transform:scale(.98)}100%{transform:scale(1)}}
+@media (prefers-reduced-motion: reduce){
+*{animation:none!important;transition:none!important}
+}
+
+header.appbar{position:sticky;top:0;z-index:70;display:flex;align-items:center;gap:12px;padding:14px 16px;
+background:color-mix(in srgb, var(--bg) 92%, transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.logo{display:flex;align-items:center;gap:10px;font-weight:800;font-size:18px;letter-spacing:0.3px}
+.logo .mark{width:28px;height:28px;border-radius:8px;background:linear-gradient(135deg,var(--pri),var(--accent))}
+.grow{flex:1}
+.icon-btn{position:relative;width:36px;height:36px;border-radius:10px;background:var(--chip);display:grid;place-items:center;border:1px solid var(--line);
+transition:transform .15s ease}
+.icon-btn:hover{transform:translateY(-1px)}
+.badge-dot{position:absolute;top:-4px;right:-2px;background:var(--danger);color:#fff;border-radius:10px;font-size:10px;line-height:1;padding:3px 6px;border:1px solid #400;display:none}
+

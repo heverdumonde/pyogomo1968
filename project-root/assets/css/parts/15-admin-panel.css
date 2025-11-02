@@ -1,0 +1,4 @@
+/* Admin floating panel (gear) */
+#adminPanel{position:fixed;right:16px;bottom:96px;z-index:65;display:none}
+#adminPanel .sheet{width:min(560px,92vw);background:var(--card);border:1px solid var(--line);border-radius:16px;box-shadow:var(--shadow);padding:12px;animation:fadeUp .18s ease}
+#adminPanel .row{display:grid;gap:8px;margin:8px 0}

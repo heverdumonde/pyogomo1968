@@ -1,0 +1,6 @@
+/* Search modal */
+.searchbar{display:none;position:fixed;inset:0;background:#0006;backdrop-filter:blur(2px);z-index:80}
+.searchbox{max-width:720px;margin:10vh auto;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:14px;
+animation:fadeUp .18s ease both}
+.searchbox input{width:100%;padding:14px 16px;border-radius:10px;border:1px solid var(--line);background:var(--chip);color:var(--ink)}
+

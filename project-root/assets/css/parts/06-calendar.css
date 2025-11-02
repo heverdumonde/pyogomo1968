@@ -1,0 +1,13 @@
+/* Calendar (meals) */
+.calendar{display:grid;grid-template-columns:repeat(7,1fr);gap:6px}
+.cal-head{display:grid;grid-template-columns:repeat(7,1fr);gap:6px;margin-bottom:6px}
+.cal-head div{padding:8px 0;text-align:center;color:var(--muted)}
+.cal-day{border:1px solid var(--line);background:var(--chip);border-radius:10px;min-height:64px;padding:8px;cursor:pointer;display:flex;flex-direction:column;justify-content:space-between;transition:transform .12s ease}
+.cal-day:hover{transform:translateY(-1px)}
+.cal-day .num{font-weight:800}
+.cal-day .dots{display:flex;gap:4px}
+.dot{width:6px;height:6px;border-radius:999px;background:var(--accent)}
+.cal-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:8px}
+.cal-header button{background:var(--chip);border:1px solid var(--line);color:var(--ink);padding:8px 10px;border-radius:10px}
+.meal-detail{margin-top:10px;background:var(--chip);border:1px solid var(--line);border-radius:12px;padding:12px}
+
