@@ -1,0 +1,14 @@
+@import url('./parts/01-base.css');
+@import url('./parts/03-search.css');
+@import url('./parts/04-banner.css');
+@import url('./parts/05-sections-cards.css');
+@import url('./parts/06-calendar.css');
+@import url('./parts/07-timetable.css');
+@import url('./parts/08-news.css');
+@import url('./parts/09-community.css');
+@import url('./parts/10-app-list.css');
+@import url('./parts/11-bottom-nav.css');
+@import url('./parts/12-auth-gate.css');
+@import url('./parts/13-notification.css');
+@import url('./parts/14-todo.css');
+@import url('./parts/15-admin-panel.css');

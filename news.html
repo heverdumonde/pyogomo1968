@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+
+<html lang="ko">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta content="
+        default-src 'self' data: blob:;
+        img-src 'self' data: blob:;
+        script-src 'self' 'unsafe-inline';
+        base-uri 'none';
+        object-src 'none';
+        frame-ancestors 'none';
+      " http-equiv="Content-Security-Policy"/>
+<title>표고모(표선고등학교의 모든것) (Final v6)</title>
+<link href="../assets/css/style.css" rel="stylesheet"/>
+</head>
+<body>
+<div class="wrap" id="app">
+<!-- AppBar -->
+<header class="appbar">
+<div class="logo"><span class="mark"></span>표선고 포털</div>
+<div class="grow"></div>
+<button class="icon-btn" id="btnSearch" title="검색">🔎</button>
+<!-- Bell with dropdown -->
+<div style="position:relative">
+<button class="icon-btn" id="btnBell" title="알림">🔔<span class="badge-dot" id="bellBadge">0</span></button>
+<div id="notiPanel">
+<header>
+<div><strong>알림</strong></div>
+<div class="muted tiny" id="notiHint">읽지 않음만 표시</div>
+</header>
+<div class="tabs">
+<button class="active" data-kind="personal">개인</button>
+<button data-kind="global">전체</button>
+</div>
+<div class="list" id="notiList"><div class="empty">알림이 없습니다.</div></div>
+<div class="admin-tools" id="notiAdmin">
+<div class="tiny muted">관리자: 전체 알림 발송</div>
+<div class="split">
+<input id="notiMsg" placeholder="내용" style="flex:1;background:var(--chip);border:1px solid var(--line);color:var(--ink);padding:8px;border-radius:8px"/>
+<button class="btn pri" id="btnBroadcast">발송</button>
+<button class="btn" id="btnClearAll">모두 삭제</button>
+</div>
+</div>
+</div>
+</div>
+<button class="icon-btn" id="btnMy" title="내 정보">👤</button>
+<button class="icon-btn" id="btnAdmin" style="display:none" title="Admin">🛠️</button>
+</header>
+<!-- Banner -->
+<div class="banner">
+<img alt="banner" src="data:image/svg+xml;utf8,&lt;?xml version='1.0'?&gt;&lt;svg xmlns='http://www.w3.org/2000/svg' width='56' height='56'&gt;&lt;rect width='56' height='56' rx='14' fill='%234f8cff'/&gt;&lt;text x='50%25' y='53%25' dominant-baseline='middle' text-anchor='middle' fill='white' font-size='20'&gt;AD&lt;/text&gt;&lt;/svg&gt;"/>
+<div>
+<span class="badge">배너</span>
+<p>홍보하시고 싶은 행사나 활동이 있으면 000으로 연락주세요.</p>
+</div>
+</div>
+<!-- Admin floating panel -->
+<div id="adminPanel">
+<div class="sheet">
+<div class="split" style="align-items:center;justify-content:space-between">
+<strong>Admin 도구</strong>
+<button class="btn" id="btnAdminClose">닫기</button>
+</div>
+<div class="line"></div>
+<div class="row">
+<div class="tiny muted">커뮤니티 게시판 관리</div>
+<div class="split">
+<input id="admBoardName" placeholder="게시판 이름 추가">
+<button class="btn" id="admAddBoard">추가</button>
+<button class="btn" id="admResetBoards">기본값 복원</button>
+</input></div>
+</div>
+<div class="row">
+<div class="tiny muted">데이터 관리</div>
+<div class="split">
+<button class="btn" id="admClearDemo">데모 데이터 초기화</button>
+<button class="btn" id="admGiveSampleNews">샘플 뉴스 1건 발행</button>
+</div>
+</div>
+<div class="row">
+<div class="tiny muted">빠른 안내</div>
+<div class="chip">관리자 계정: admin@pyoseon.hs.kr / admin1234</div>
+</div>
+</div>
+</div>
+<!-- Dynamic view -->
+<main id="view"></main>
+<!-- Bottom nav -->
+<nav class="bottom">
+<a class="" data-tab="home" href="index.html#home">🏠<span class="tiny">홈</span></a>
+<a data-tab="timetable" href="timetable.html#timetable">📅<span class="tiny">시간표</span></a>
+<a class="active" data-tab="news" href="news.html#news">📰<span class="tiny">뉴스</span></a>
+<a data-tab="community" href="community.html#community">💬<span class="tiny">커뮤니티</span></a>
+<a data-tab="study" href="../pages/dashboard.html#study">🎓<span class="tiny">IB</span></a>
+</nav>
+</div>
+<!-- Search modal -->
+<div class="searchbar" id="searchModal">
+<div class="searchbox">
+<input id="searchInput" placeholder="통합 검색(공지/뉴스/게시글/도서)… Enter로 검색"/>
+<div class="line"></div>
+<div class="muted" id="searchResult" style="min-height:40px">검색어를 입력하세요.</div>
+<div style="display:flex;justify-content:flex-end;gap:8px;margin-top:10px">
+<button class="btn ghost" onclick="UI.hideSearch()">닫기</button>
+</div>
+</div>
+</div>
+<!-- Fullscreen Auth Gate -->
+<div id="gate">
+<div class="panel">
+<div class="brand">Pyo<b>Gomo</b></div>
+<div class="muted">계정으로 로그인하거나 가입하세요.</div>
+<font size="1">글자크기 : 3</font>
+<div class="error" id="authError"></div>
+<!-- 로그인 -->
+<div id="loginForm">
+<div class="row">
+<input autocomplete="username" id="loginEmail" maxlength="80" placeholder="학교 이메일 (예: you@gmail.com)" type="email"/>
+<input autocomplete="current-password" id="loginPass" maxlength="64" placeholder="비밀번호" type="password"/>
+</div>
+<div class="actions">
+<label><input id="autoLogin" type="checkbox"/> 자동 로그인(이 기기)</label>
+<button class="btn" id="btnLogin">로그인</button>
+</div>
+<div class="switch">계정이 없나요? <a href="#" id="goSignup">회원가입</a></div>
+</div>
+<!-- 회원가입 (+ 과목 그룹 A~G 입력) -->
+<div id="signupForm" style="display:none">
+<div class="row">
+<select id="suGrade">
+<option value="">학년 선택</option>
+<option value="1">1학년</option>
+<option value="2">2학년</option>
+<option value="3">3학년</option>
+</select>
+<input id="suName" maxlength="20" placeholder="이름"/>
+<input id="suEmail" maxlength="80" placeholder="학교 이메일(@gmail)" type="email"/>
+<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:8px">
+<input id="suClass" min="1" placeholder="반" type="number"/>
+<input id="suNo" min="1" placeholder="번호" type="number"/>
+<input id="suPw" maxlength="64" placeholder="비밀번호(8자 이상)" type="password"/>
+</div>
+<input id="suPw2" maxlength="64" placeholder="비밀번호 확인" type="password"/>
+</div>
+<div class="line"></div>
+<div class="tiny muted">선택 과목 그룹(A~G) — 쉼표로 구분(예: 수학, 영어, 국어). 2·3학년 시간표 자동 배치에 사용됩니다.</div>
+<div class="row" style="grid-template-columns:repeat(2,1fr);">
+<input id="suGA" value="A그룹"/>
+<input id="suGB" value="B그룹"/>
+<input id="suGC" value="C그룹"/>
+<input id="suGD" value="D그룹"/>
+<input id="suGE" value="E그룹"/>
+<input id="suGF" value="G그룹"/>
+<input id="suGG" value="오밥이"/>
+</div>
+<div class="actions">
+<span></span>
+<button class="btn" id="btnSignup">가입하기</button>
+</div>
+<div class="switch">이미 계정이 있나요?<a href="#" id="goLogin">로그인으로</a></div>
+</div>
+</div>
+</div>
+<script>if(!location.hash) location.hash='#news';</script><script src="../assets/js/main.js" type="module"></script>
+</body>
+</html>
