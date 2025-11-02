@@ -1,0 +1,6 @@
+/* Bottom nav */
+nav.bottom{position:fixed;left:0;right:0;bottom:0;z-index:60;background:color-mix(in srgb, var(--bg) 94%, transparent);border-top:1px solid var(--line);display:grid;grid-template-columns:repeat(5,1fr)}
+nav.bottom a{display:flex;flex-direction:column;gap:4px;align-items:center;justify-content:center;padding:10px 6px;color:var(--muted);transition:color .12s ease, transform .12s ease}
+nav.bottom a:hover{transform:translateY(-1px)}
+nav.bottom a.active{color:var(--ink);font-weight:800}
+

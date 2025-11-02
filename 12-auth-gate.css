@@ -1,0 +1,14 @@
+/* Fullscreen Auth Gate */
+#gate{position:fixed;inset:0;display:grid;place-items:center;background:linear-gradient(180deg,var(--bg) 0%, color-mix(in srgb, var(--bg) 80%, black 20%) 100%);z-index:100}
+#gate .panel{width:min(620px,92vw);background:var(--card);border:1px solid var(--line);border-radius:18px;padding:20px 18px 16px;box-shadow:0 20px 60px #0002;animation:fadeUp .22s ease}
+#gate .brand{font-weight:900;font-size:22px;margin-bottom:8px}
+#gate .brand b{color:var(--pri)}
+#gate .muted{color:var(--muted);font-size:13px;margin-bottom:12px}
+#gate .row{display:grid;gap:8px;margin:10px 0}
+#gate input, #gate select, #gate textarea{width:100%;background:var(--chip);border:1px solid var(--line);color:var(--ink);padding:12px;border-radius:12px}
+#gate .actions{display:flex;align-items:center;justify-content:space-between;margin-top:8px}
+#gate .btn{background:var(--pri);color:#fff;border:0;padding:12px 14px;border-radius:12px;font-weight:800}
+#gate label{display:flex;gap:8px;align-items:center;color:var(--muted)}
+#gate .switch{margin-top:10px;font-size:13px}
+#gate .error{color:var(--danger);font-size:12px;height:16px}
+

@@ -1,0 +1,13 @@
+/* Notification dropdown */
+#notiPanel{position:absolute;top:46px;right:0;width:340px;background:var(--card);border:1px solid var(--line);border-radius:12px;box-shadow:0 10px 30px #0002;display:none;z-index:75;animation:fadeUp .16s ease}
+#notiPanel header{display:flex;gap:8px;align-items:center;justify-content:space-between;padding:10px;border-bottom:1px solid var(--line)}
+#notiPanel .tabs{display:flex;gap:8px;padding:8px}
+#notiPanel .tabs button{flex:1;border:1px solid var(--line);background:var(--chip);color:var(--ink);border-radius:999px;padding:8px}
+#notiPanel .tabs button.active{background:var(--pri);color:#fdfdfd;border-color:color-mix(in srgb, var(--pri) 60%, black 40%)}
+#notiPanel .list{max-height:280px;overflow:auto;padding:0 8px 8px}
+#notiPanel .item{border:1px solid var(--line);border-radius:10px;padding:8px;margin:8px 0;background:var(--chip);display:flex;justify-content:space-between;gap:8px;align-items:center}
+#notiPanel .empty{color:var(--muted);text-align:center;padding:18px}
+#notiPanel .admin-tools{display:none;padding:8px;border-top:1px solid var(--line)}
+#notiPanel .admin-tools .muted{margin-bottom:6px}
+#notiPanel .list .del{background:transparent;border:1px solid var(--line);border-radius:10px;padding:6px 8px}
+

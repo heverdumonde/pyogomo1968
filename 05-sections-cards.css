@@ -1,0 +1,16 @@
+/* Sections & cards */
+.section{margin:16px}
+.section h2{margin:0 0 10px;font-size:18px}
+.cards{display:grid;grid-template-columns:repeat(12,1fr);gap:12px}
+.card{grid-column:span 12;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:14px;box-shadow:var(--shadow);animation:fadeIn .2s ease both}
+@media(min-width:560px){.card.half{grid-column:span 6}}
+@media(min-width:900px){.card.third{grid-column:span 4}}
+.split{display:flex;gap:12px;flex-wrap:wrap}
+.chip{display:inline-flex;align-items:center;gap:6px;background:var(--chip);border:1px solid var(--line);border-radius:999px;padding:6px 10px;font-size:12px;color:var(--muted)}
+.muted{color:var(--muted)}
+.line{height:1px;background:var(--line);margin:10px 0}
+.btn{padding:10px 12px;border-radius:10px;border:1px solid var(--line);background:var(--chip);color:var(--ink);font-weight:700}
+.btn.pri{background:var(--pri);border-color:color-mix(in srgb, var(--pri) 60%, black 40%);color:#fff}
+.btn.ghost{background:transparent}
+.tiny{font-size:11px}
+
